@@ -5,23 +5,21 @@ public class cineCampusActor {
     private String ActorName;
     private int ActorAge;
     private String ActorNation;
-    private int genreId;
+    private int GenreId;
 
-    public cineCampusActor(String ActorName, int ActorAge, int idPlane, String ActorNation, int genreId) {
+    public cineCampusActor(String ActorName, int ActorAge, String ActorNation, int GenreId) {
         this.ActorName = ActorName;
         this.ActorAge = ActorAge;
-        this.idPlane = idPlane;
         this.ActorNation = ActorNation;
-        this.genreId = genreId;
+        this.GenreId = GenreId;
     }
 
-    public cineCampusActor(int id, String ActorName, int ActorAge, int idPlane, String ActorNation, int genreId) {
+    public cineCampusActor(int id, String ActorName, int ActorAge, String ActorNation, int GenreId) {
         this.id = id;
         this.ActorName = ActorName;
         this.ActorAge = ActorAge;
-        this.idPlane = idPlane;
         this.ActorNation = ActorNation;
-        this.genreId = genreId;
+        this.GenreId = GenreId;
     }
 
     // Getters y Setters
@@ -57,11 +55,11 @@ public class cineCampusActor {
         this.ActorNation = ActorNation;
     }
 
-    public int getgenreId() {
-        return genreId;
+    public int getGenreId() {
+        return GenreId;
     }
 
-    public void setgenreId(int genreId) {
-        this.genreId = genreId;
+    public void setGenreId(int GenreId) {
+        this.GenreId = GenreId;
     }
 }

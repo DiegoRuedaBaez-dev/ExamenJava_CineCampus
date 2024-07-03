@@ -1,15 +1,15 @@
-package com.cineCampus.cinecampus_actor.infrasctructure;
+package com.cinecampus.cinecampus_actor.application;
 
-import com.cineCampus.cinecampus_actor.domain.models.cineCampusActor;
-import com.cineCampus.cinecampus_actor.infrasctructure.cineCampusActorRepository;
+import com.cinecampus.cinecampus_actor.domain.models.cineCampusActor;
+import com.cinecampus.cinecampus_actor.infrasctructure.cinecampusActorRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 public class cineCampusActorService {
-    private final cineCampusActorRepository cineCampusActorRepository;
+    private final cinecampusActorRepository cineCampusActorRepository;
 
-    public cineCampusActorService(cineCampusActorRepository cineCampusActorRepository) {
+    public cineCampusActorService(cinecampusActorRepository cineCampusActorRepository) {
         this.cineCampusActorRepository = cineCampusActorRepository;
     }
 
