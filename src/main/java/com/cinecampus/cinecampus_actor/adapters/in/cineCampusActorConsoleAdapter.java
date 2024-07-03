@@ -6,13 +6,13 @@ import com.cinecampus.cinecampus_actor.application.cineCampusActorService;
 import com.cinecampus.cinecampus_actor.domain.models.cineCampusActor;
 
 public class cineCampusActorConsoleAdapter {
-    private final cineCampusActorService cineCampusActorService;
+    private final cineCampusActorService CampusActorService;
 
-    public cineCampusActorConsoleAdapter(cineCampusActorService cineCampusActorService) {
-        this.cineCampusActorService = cineCampusActorService;
+    public cineCampusActorConsoleAdapter(cineCampusActorService CampusActorService) {
+        this.CampusActorService = CampusActorService;
     }
 
-    public static void start() {
+    public void start() {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -40,7 +40,7 @@ public class cineCampusActorConsoleAdapter {
                     scanner.nextLine(); // Consume newline
 
                     cineCampusActor newcineCampusActor = new cineCampusActor(createActorID, createActorName, createActorNation, createGenreId, createActorAge);
-                    cineCampusActorService.createcineCampusActor(newcineCampusActor);
+                    CampusActorService.createcineCampusActor(newcineCampusActor);
                     break;
 
                 case 2:
@@ -58,18 +58,18 @@ public class cineCampusActorConsoleAdapter {
                     scanner.nextLine(); // Consume newline
 
                     cineCampusActor updatecineCampusActor = new cineCampusActor(updateActorID, updateActorName, updateActorNation, updateGenreId, updateActorAge);
-                    cineCampusActorService.updatecineCampusActor(updatecineCampusActor);
+                    CampusActorService.updatecineCampusActor(updatecineCampusActor);
                     break;
 
                 case 4:
                     System.out.print("Ingrese el ID del Actor a eliminar: ");
                     int deleteId = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
-                    cineCampusActorService.deletecineCampusActor(deleteId);
+                    CampusActorService.deletecineCampusActor(deleteId);
                     break;
 
                 case 5:
-                    cineCampusActorService.getAllcineCampusActors().forEach(fc -> {
+                    CampusActorService.getAllcineCampusActors().forEach(fc -> {
                         System.out.println("ID: " + fc.getId() + ", Nombre Actor: " + fc.getActorName() + ", Nacionalidad Actor: " + fc.getActorNation() + ", Edad Actor: " + fc.getActorAge() + ",  Genero Actor: " + fc.getGenreId());
                     });
                     break;

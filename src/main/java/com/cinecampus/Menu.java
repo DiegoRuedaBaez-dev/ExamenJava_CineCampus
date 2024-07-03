@@ -2,11 +2,11 @@ package com.cinecampus;
 
 import java.util.Scanner;
 
-import com.cinecampus.cinecampus_actor.adapters.in.cineCampusActorConsoleAdapter;
+import com.cinecampus.cinecampus_actor.*;
+import com.cinecampus.cinecampus_actor.domain.models.cineCampusActor;
 
 public class Menu {
-    public static void main() {
-        //hace que las conexiones se cierren automáticamente a los 5 minutos
+    public static void main(String[] args) {
         System.out.println("╔═══════════════════════════╗");
         System.out.println("║                           ║");
         System.out.println("║        Cine Campus        ║");
@@ -23,7 +23,7 @@ public class Menu {
 
             System.out.print("Opción: ");
             int option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer
+            scanner.nextLine();
 
             String url = "jdbc:mysql://localhost:3306/cinecampus";
             String user = "123456";
@@ -31,8 +31,7 @@ public class Menu {
             
             switch (option) {
                 case 1:
-                    cineCampusActorConsoleAdapter.start();
-                    break;
+                  break;
                 case 2:
                     break;
                 case 3:
