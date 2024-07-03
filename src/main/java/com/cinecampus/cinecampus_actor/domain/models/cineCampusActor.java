@@ -1,4 +1,4 @@
-package com.cineCampus.cinecampus_actor.domain.models;
+package com.cinecampus.cinecampus_actor.domain.models;
 
 public class cineCampusActor {
     private int id;

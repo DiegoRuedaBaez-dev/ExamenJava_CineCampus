@@ -4,7 +4,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 import com.cinecampus.cinecampus_actor.application.cineCampusActorService;
-import com.cinecampus.cinecampus_actor.domain.cineCampusActor;
+import com.cinecampus.cinecampus_actor.domain.models.cineCampusActor;
 
 public class cineCampusActorConsoleAdapter {
     private final cineCampusActorService cineCampusActorService;
