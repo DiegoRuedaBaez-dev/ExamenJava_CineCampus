@@ -1,6 +1,8 @@
 package com.cinecampus;
-import com.cinecampus.cinecampus_actor.*;
+
 import java.util.Scanner;
+
+import com.cinecampus.cinecampus_actor.adapters.in.cineCampusActorConsoleAdapter;
 
 public class Menu {
     public static void main() {
@@ -29,7 +31,7 @@ public class Menu {
             
             switch (option) {
                 case 1:
-                    
+                    cineCampusActorConsoleAdapter.start();
                     break;
                 case 2:
                     break;

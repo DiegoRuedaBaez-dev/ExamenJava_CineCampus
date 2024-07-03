@@ -1,6 +1,5 @@
 package com.cinecampus.cinecampus_actor.adapters.in;
 
-import java.util.Optional;
 import java.util.Scanner;
 
 import com.cinecampus.cinecampus_actor.application.cineCampusActorService;
@@ -13,7 +12,7 @@ public class cineCampusActorConsoleAdapter {
         this.cineCampusActorService = cineCampusActorService;
     }
 
-    public void start() {
+    public static void start() {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -40,7 +39,7 @@ public class cineCampusActorConsoleAdapter {
                     String createGenreId = scanner.nextLine();
                     scanner.nextLine(); // Consume newline
 
-                    cineCampusActor newcineCampusActor = new cineCampusActor(createActorID, createActorName, createActorNation, createActorAge, createGenreId);
+                    cineCampusActor newcineCampusActor = new cineCampusActor(createActorID, createActorName, createActorNation, createGenreId, createActorAge);
                     cineCampusActorService.createcineCampusActor(newcineCampusActor);
                     break;
 
@@ -58,7 +57,7 @@ public class cineCampusActorConsoleAdapter {
                     String updateGenreId = scanner.nextLine();
                     scanner.nextLine(); // Consume newline
 
-                    cineCampusActor updatecineCampusActor = new cineCampusActor(updateActorID, updateActorName, updateActorNation, updateActorAge, updateGenreId);
+                    cineCampusActor updatecineCampusActor = new cineCampusActor(updateActorID, updateActorName, updateActorNation, updateGenreId, updateActorAge);
                     cineCampusActorService.updatecineCampusActor(updatecineCampusActor);
                     break;
 
@@ -70,8 +69,8 @@ public class cineCampusActorConsoleAdapter {
                     break;
 
                 case 5:
-                    cineCampusActorService.getAllActors().forEach(fc -> {
-                        System.out.println("ID: " + fc.getId() + ", Nombre Actor: " + fc.getActorName() + ", Nacionalidad Actor: " + fc.getActorNation() + ", Edad Actor: " + fc.getActorAge() + ",  Genero Actor: " + fc.getActorGenreID());
+                    cineCampusActorService.getAllcineCampusActors().forEach(fc -> {
+                        System.out.println("ID: " + fc.getId() + ", Nombre Actor: " + fc.getActorName() + ", Nacionalidad Actor: " + fc.getActorNation() + ", Edad Actor: " + fc.getActorAge() + ",  Genero Actor: " + fc.getGenreId());
                     });
                     break;
 

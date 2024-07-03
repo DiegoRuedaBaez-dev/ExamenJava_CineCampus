@@ -9,11 +9,11 @@ import com.cinecampus.cinecampus_actor.domain.models.cineCampusActor;
 import com.cinecampus.cinecampus_actor.infrasctructure.cinecampusActorRepository;
 
 public class cinecampusActorMySqlRepository implements cinecampusActorRepository {
-    private final String url;
-    private final String user;
-    private final String password;
+    private String url;
+    private String user;
+    private String password;
 
-    public cineCampusActorMySQLRepository(String url, String user, String password) {
+    public void cineCampusActorMySQLRepository(String url, String user, String password) {
         this.url = url;
         this.user = user;
         this.password = password;
@@ -22,13 +22,13 @@ public class cinecampusActorMySqlRepository implements cinecampusActorRepository
     @Override
     public void save(cineCampusActor cineCampusActor) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            String query = "INSERT INTO actor (nombre_actor, id_nacionalidad, id_plane, id_airport, id_nacionalidad_status) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO actor (id_actor,nombre_actor, id_nacionalidad, edad, id_genero) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(query)) {
-                statement.setString(1, cineCampusActor.getId());
-                statement.setInt(2, cineCampusActor.getIdTrip());
-                statement.setInt(3, cineCampusActor.getIdPlane());
-                statement.setString(4, cineCampusActor.getIdAirport());
-                statement.setInt(5, cineCampusActor.getIdTripStatus());
+                statement.setInt(1, cineCampusActor.getId());
+                statement.setString(2, cineCampusActor.getActorName());
+                statement.setInt(3, cineCampusActor.getActorAge());
+                statement.setString(4, cineCampusActor.getActorNation());
+                statement.setInt(5, cineCampusActor.getGenreId());
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -39,13 +39,13 @@ public class cinecampusActorMySqlRepository implements cinecampusActorRepository
     @Override
     public void update(cineCampusActor cineCampusActor) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            String query = "UPDATE actor SET id_actor = ?, nombre_actor = ?, id_nacionalidad = ?, id_plane = ?, id_airport = ?, id_nacionalidad_status = ? WHERE id = ?";
+            String query = "UPDATE actor SET id_actor = ?, nombre_actor = ?, id_nacionalidad = ?, edad = ?, id_genero = ? WHERE id = ?";
             try (PreparedStatement statement = connection.prepareStatement(query)) {
                 statement.setInt(1, cineCampusActor.getId());
                 statement.setString(2, cineCampusActor.getActorName());
                 statement.setInt(3, cineCampusActor.getActorAge());
                 statement.setString(4, cineCampusActor.getActorNation());
-                statement.setInt(5, cineCampusActor.getgenreId());
+                statement.setInt(5, cineCampusActor.getGenreId());
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -65,8 +65,8 @@ public class cinecampusActorMySqlRepository implements cinecampusActorRepository
                             resultSet.getInt("id"),
                             resultSet.getString("nombre_actor"),
                             resultSet.getInt("id_nacionalidad"),
-                            resultSet.getString("id_airport"),
-                            resultSet.getInt("id_nacionalidad_status")
+                            resultSet.getString("id_genero"),
+                            resultSet.getInt("edad_actor")
                         );
                         return Optional.of(cineCampusActor);
                     }
@@ -103,9 +103,8 @@ public class cinecampusActorMySqlRepository implements cinecampusActorRepository
                         resultSet.getInt("id"),
                         resultSet.getString("nombre_actor"),
                         resultSet.getInt("id_nacionalidad"),
-                        resultSet.getInt("id_plane"),
-                        resultSet.getString("id_airport"),
-                        resultSet.getInt("id_nacionalidad_status")
+                        resultSet.getString("id_genero"),
+                        resultSet.getInt("edad_actor")
                     );
                     cineCampusActors.add(cineCampusActor);
                 }
@@ -114,17 +113,5 @@ public class cinecampusActorMySqlRepository implements cinecampusActorRepository
             e.printStackTrace();
         }
         return cineCampusActors;
-    }
-
-    @Override
-    public void save(cineCampusActor cinecampusActor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
-    }
-
-    @Override
-    public void update(cineCampusActor cinecampusActor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 }
